@@ -16,6 +16,12 @@
     },
     "renderer": {
       "tags": []
+    },
+    "playground": {
+      "tags": []
+    },
+    "playground-e2e": {
+      "tags": []
     }
   }
 }
