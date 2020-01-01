@@ -13,6 +13,9 @@
     },
     "runner": {
       "tags": []
+    },
+    "renderer": {
+      "tags": []
     }
   }
 }
