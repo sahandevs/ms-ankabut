@@ -1,0 +1,12 @@
+bebin azinja() {
+
+  bede Mahfaze(
+    Neveshte("Dorod jahan!", "background-color: red"),
+    Mahfaze(
+      Neveshte("Yek neveshte azmayeshi abi", "color: blue"),
+      Neveshte("Yek neveshte dg ke sabze", "color: green"),
+      "display:flex; flex-direction: row"
+     ),
+    "display:flex; flex-direction: column"
+  );
+}
