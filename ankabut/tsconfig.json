@@ -15,7 +15,9 @@
     "skipLibCheck": true,
     "skipDefaultLibCheck": true,
     "baseUrl": ".",
-    "paths": {}
+    "paths": {
+      "@ankabut/parser": ["libs/parser/src/index.ts"]
+    }
   },
   "exclude": ["node_modules", "tmp"]
 }
