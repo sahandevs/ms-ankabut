@@ -14,7 +14,7 @@ export class HashemiVisitor extends AbstractParseTreeVisitor<any>
     super();
   }
 
-  runFunction(functionName: string) {
+  runFunction(functionName: string, params: any[]) {
     return this.visitBlock(this.functions[functionName]);
   }
 
@@ -24,7 +24,7 @@ export class HashemiVisitor extends AbstractParseTreeVisitor<any>
 
   visitSourceFile(ctx: Parser.SourceFileContext) {
     super.visitChildren(ctx);
-    return this.runFunction(this.startingPoint);
+    return this.runFunction(this.startingPoint, []);
   }
 
   functions: { [name: string]: Parser.BlockContext } = {};
@@ -167,5 +167,16 @@ export class HashemiVisitor extends AbstractParseTreeVisitor<any>
     if (numericLit) return Number(numericLit.toString());
     const expresssion = ctx.expression();
     if (expresssion) return this.visitExpression(expresssion);
+    const memberExpression = ctx.member_expression();
+    if (memberExpression)
+      return this.runFunction(
+        ctx.IDENTIFIER() + '',
+        this.visitMember_expression(memberExpression)
+      );
+  }
+
+  visitMember_expression(ctx: Parser.Member_expressionContext) {
+    const parameters = ctx.expression().map(exp => this.visitExpression(exp));
+    return parameters;
   }
 }
