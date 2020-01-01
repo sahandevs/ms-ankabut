@@ -165,7 +165,7 @@ export class HashemiVisitor extends AbstractParseTreeVisitor<any>
 
   visitFactor(ctx: Parser.FactorContext) {
     const stringLit = ctx.STRING_LITERAL();
-    if (stringLit) return stringLit.toString();
+    if (stringLit) return stringLit.text.substring(1, stringLit.text.length - 1);
     const numericLit = ctx.NUMERIC_LITERAL();
     if (numericLit) return Number(numericLit.toString());
     const expresssion = ctx.expression();
