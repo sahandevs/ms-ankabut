@@ -9,13 +9,16 @@ export class HashemiVisitor extends AbstractParseTreeVisitor<any>
 
   constructor(
     private onSolve: (T: any) => void,
-    private startingPoint: string
+    private startingPoint: string,
+    private builtInfunctions: (functionName: string, params: any[]) => any
   ) {
     super();
   }
 
   runFunction(functionName: string, params: any[]) {
-    return this.visitBlock(this.functions[functionName]);
+    const fun = this.functions[functionName];
+    if (fun) return this.visitBlock(fun);
+    return this.builtInfunctions(functionName, params);
   }
 
   shouldVisitNextChild(_, __) {

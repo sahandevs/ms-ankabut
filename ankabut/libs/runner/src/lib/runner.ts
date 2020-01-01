@@ -7,6 +7,7 @@ type Options = {
   onError: OnSyntaxError;
   onNoSyntaxError: OnNoSyntaxError;
   onSolve: OnSolve;
+  onRunBuiltinFunction: (functionName: string, params: any[]) => any;
 };
 
 type OnSyntaxError = (message: string) => void;
@@ -17,9 +18,10 @@ function parseAndRun(
   sourceFile: string,
   onSyntaxError: OnSyntaxError,
   onNoSyntaxError: OnNoSyntaxError,
-  onSolve: OnSolve
+  onSolve: OnSolve,
+  onRunBuiltinFunction: (functionName: string, params: any[]) => any
 ) {
-  let listener = new HashemiVisitor(onSolve, 'azinja');
+  let listener = new HashemiVisitor(onSolve, 'azinja', onRunBuiltinFunction);
   let inputStream = new ANTLRInputStream(sourceFile);
   let lexer = new Parser.HashemiGrammerLexer(inputStream);
   let tokenStream = new CommonTokenStream(lexer);
@@ -42,12 +44,15 @@ ${e}
   if (parser.numberOfSyntaxErrors === 0) {
     onNoSyntaxError();
   }
- 
+
   onSolve(listener.visit(tree));
   // ParseTreeWalker.DEFAULT.walk(listener, tree);
 }
 
-export function run<T = any>(sourceFile: string): Promise<T> {
+export function run<T = any>(
+  sourceFile: string,
+  onBuiltInFunction?: Options['onRunBuiltinFunction']
+): Promise<T> {
   return new Promise((resolve, reject) => {
     parseAndRun(
       sourceFile,
@@ -57,7 +62,8 @@ export function run<T = any>(sourceFile: string): Promise<T> {
       () => {},
       output => {
         resolve(output);
-      }
+      },
+      onBuiltInFunction || (() => null)
     );
   });
 }

@@ -28,3 +28,20 @@ it('sould return 5', async () => {
     );
     expect(result).toBe(5);
   });
+
+  it('sould detect builtin functions', async () => {
+    let result = await run(
+      `
+          bebin azinja() {
+              
+              bede sum(1, 2, 3) + 3;
+          }
+      `,
+      (funName, params) => {
+          if (funName === 'sum') {
+              return params.reduce((a, b) => a + b, 0);
+          }
+      }
+    );
+    expect(result).toBe(9);
+  });
