@@ -8,65 +8,54 @@ grammar HashemiGrammer;
 sourceFile: function function* EOF;
 
 function:
-	'bebin' IDENTIFIER s = '(' (IDENTIFIER ( ',' IDENTIFIER)*)? ')' body = block[false];
+	'bebin' IDENTIFIER s = '(' (IDENTIFIER ( ',' IDENTIFIER)*)? ')' body = block;
 
-block[boolean inLoop]
-	returns[HashemStatementNode result]:
-	s = '{' (statement[inLoop])* e = '}';
+block:
+	s = '{' (statement)* e = '}';
 
-statement[boolean inLoop]
-	returns[HashemStatementNode result]:
+statement:
 	(
 		while_statement
 		| b = 'khob' ';'
 		| c = 'badi' ';'
-		| if_statement[inLoop]
+		| if_statement
 		| return_statement
 		| expression ';'
 		| d = 'debugger' ';'
 	);
 
-while_statement
-	returns[HashemStatementNode result]:
-	w = 'ta' '(' condition = expression ') bood' body = block[true];
+while_statement:
+	w = 'ta' '(' condition = expression ') bood' body = block;
 
-if_statement[boolean inLoop]
-	returns[HashemStatementNode result]:
-	i = 'age' '(' condition = expression ') bood' then = block[inLoop] (
-		'na?' block[inLoop] { elsePart = $block.result; }
+if_statement:
+	i = 'age' '(' condition = expression ') bood' then = block(
+		'na?' block
 	)?;
 
-return_statement
-	returns[HashemStatementNode result]:
+return_statement:
 	r = 'bede' (expression)? ';';
 
-expression
-	returns[HashemExpressionNode result]:
+expression:
 	logic_term (op = '||' logic_term)*;
 
-logic_term
-	returns[HashemExpressionNode result]:
+logic_term:
 	logic_factor (op = '&&' logic_factor)*;
 
-logic_factor
-	returns[HashemExpressionNode result]:
+logic_factor:
 	arithmetic (
 		op = ('<' | '<=' | '>' | '>=' | '==' | '!=') arithmetic
 	)?;
 
-arithmetic
-	returns[HashemExpressionNode result]:
+arithmetic:
 	term (op = ('+' | '-') term)*;
 
-term
-	returns[HashemExpressionNode result]:
+term:
 	factor (op = ('*' | '/' | '%') factor)*;
 
-factor
-	returns[HashemExpressionNode result]:
+factor:
 	(
 		IDENTIFIER (
-			member_expression[null, null, assignmentName]
+			member_expression
 			|
 		)
 		| STRING_LITERAL
@@ -74,15 +63,14 @@ factor
 		| s = '(' expr = expression e = ')'
 	);
 
-member_expression[HashemExpressionNode r, HashemExpressionNode assignmentReceiver, HashemExpressionNode assignmentName]
-	returns[HashemExpressionNode result]:
+member_expression:
 	(
 		'(' ( expression ( ',' expression)*)? e = ')'
 		| '=' expression
 		| '.' IDENTIFIER
 		| '[' expression ']'
 	) (
-		member_expression[$result, receiver, nestedAssignmentName]
+		member_expression
 	)?;
 
 // lexer

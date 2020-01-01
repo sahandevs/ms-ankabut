@@ -208,7 +208,7 @@ export class HashemiGrammerParser extends Parser {
 			this.state = 50;
 			this.match(HashemiGrammerParser.T__3);
 			this.state = 51;
-			_localctx._body = this.block(false);
+			_localctx._body = this.block();
 			}
 		}
 		catch (re) {
@@ -226,8 +226,8 @@ export class HashemiGrammerParser extends Parser {
 		return _localctx;
 	}
 	// @RuleVersion(0)
-	public block(inLoop: boolean): BlockContext {
-		let _localctx: BlockContext = new BlockContext(this._ctx, this.state, inLoop);
+	public block(): BlockContext {
+		let _localctx: BlockContext = new BlockContext(this._ctx, this.state);
 		this.enterRule(_localctx, 4, HashemiGrammerParser.RULE_block);
 		let _la: number;
 		try {
@@ -242,7 +242,7 @@ export class HashemiGrammerParser extends Parser {
 				{
 				{
 				this.state = 54;
-				this.statement(inLoop);
+				this.statement();
 				}
 				}
 				this.state = 59;
@@ -268,8 +268,8 @@ export class HashemiGrammerParser extends Parser {
 		return _localctx;
 	}
 	// @RuleVersion(0)
-	public statement(inLoop: boolean): StatementContext {
-		let _localctx: StatementContext = new StatementContext(this._ctx, this.state, inLoop);
+	public statement(): StatementContext {
+		let _localctx: StatementContext = new StatementContext(this._ctx, this.state);
 		this.enterRule(_localctx, 6, HashemiGrammerParser.RULE_statement);
 		try {
 			this.enterOuterAlt(_localctx, 1);
@@ -302,7 +302,7 @@ export class HashemiGrammerParser extends Parser {
 			case HashemiGrammerParser.T__12:
 				{
 				this.state = 67;
-				this.if_statement(inLoop);
+				this.if_statement();
 				}
 				break;
 			case HashemiGrammerParser.T__14:
@@ -365,7 +365,7 @@ export class HashemiGrammerParser extends Parser {
 			this.state = 79;
 			this.match(HashemiGrammerParser.T__11);
 			this.state = 80;
-			_localctx._body = this.block(true);
+			_localctx._body = this.block();
 			}
 		}
 		catch (re) {
@@ -383,8 +383,8 @@ export class HashemiGrammerParser extends Parser {
 		return _localctx;
 	}
 	// @RuleVersion(0)
-	public if_statement(inLoop: boolean): If_statementContext {
-		let _localctx: If_statementContext = new If_statementContext(this._ctx, this.state, inLoop);
+	public if_statement(): If_statementContext {
+		let _localctx: If_statementContext = new If_statementContext(this._ctx, this.state);
 		this.enterRule(_localctx, 10, HashemiGrammerParser.RULE_if_statement);
 		let _la: number;
 		try {
@@ -399,8 +399,8 @@ export class HashemiGrammerParser extends Parser {
 			this.state = 85;
 			this.match(HashemiGrammerParser.T__11);
 			this.state = 86;
-			_localctx._then = _localctx._block = this.block(inLoop);
-			this.state = 91;
+			_localctx._then = this.block();
+			this.state = 89;
 			this._errHandler.sync(this);
 			_la = this._input.LA(1);
 			if (_la === HashemiGrammerParser.T__13) {
@@ -408,8 +408,7 @@ export class HashemiGrammerParser extends Parser {
 				this.state = 87;
 				this.match(HashemiGrammerParser.T__13);
 				this.state = 88;
-				_localctx._block = this.block(inLoop);
-				 elsePart = _localctx._block.result; 
+				this.block();
 				}
 			}
 
@@ -437,19 +436,19 @@ export class HashemiGrammerParser extends Parser {
 		try {
 			this.enterOuterAlt(_localctx, 1);
 			{
-			this.state = 93;
+			this.state = 91;
 			_localctx._r = this.match(HashemiGrammerParser.T__14);
-			this.state = 95;
+			this.state = 93;
 			this._errHandler.sync(this);
 			_la = this._input.LA(1);
 			if (_la === HashemiGrammerParser.T__1 || ((((_la - 36)) & ~0x1F) === 0 && ((1 << (_la - 36)) & ((1 << (HashemiGrammerParser.IDENTIFIER - 36)) | (1 << (HashemiGrammerParser.STRING_LITERAL - 36)) | (1 << (HashemiGrammerParser.NUMERIC_LITERAL - 36)))) !== 0)) {
 				{
-				this.state = 94;
+				this.state = 92;
 				this.expression();
 				}
 			}
 
-			this.state = 97;
+			this.state = 95;
 			this.match(HashemiGrammerParser.T__7);
 			}
 		}
@@ -475,23 +474,23 @@ export class HashemiGrammerParser extends Parser {
 			let _alt: number;
 			this.enterOuterAlt(_localctx, 1);
 			{
-			this.state = 99;
+			this.state = 97;
 			this.logic_term();
-			this.state = 104;
+			this.state = 102;
 			this._errHandler.sync(this);
 			_alt = this.interpreter.adaptivePredict(this._input, 7, this._ctx);
 			while (_alt !== 2 && _alt !== ATN.INVALID_ALT_NUMBER) {
 				if (_alt === 1) {
 					{
 					{
-					this.state = 100;
+					this.state = 98;
 					_localctx._op = this.match(HashemiGrammerParser.T__15);
-					this.state = 101;
+					this.state = 99;
 					this.logic_term();
 					}
 					}
 				}
-				this.state = 106;
+				this.state = 104;
 				this._errHandler.sync(this);
 				_alt = this.interpreter.adaptivePredict(this._input, 7, this._ctx);
 			}
@@ -519,23 +518,23 @@ export class HashemiGrammerParser extends Parser {
 			let _alt: number;
 			this.enterOuterAlt(_localctx, 1);
 			{
-			this.state = 107;
+			this.state = 105;
 			this.logic_factor();
-			this.state = 112;
+			this.state = 110;
 			this._errHandler.sync(this);
 			_alt = this.interpreter.adaptivePredict(this._input, 8, this._ctx);
 			while (_alt !== 2 && _alt !== ATN.INVALID_ALT_NUMBER) {
 				if (_alt === 1) {
 					{
 					{
-					this.state = 108;
+					this.state = 106;
 					_localctx._op = this.match(HashemiGrammerParser.T__16);
-					this.state = 109;
+					this.state = 107;
 					this.logic_factor();
 					}
 					}
 				}
-				this.state = 114;
+				this.state = 112;
 				this._errHandler.sync(this);
 				_alt = this.interpreter.adaptivePredict(this._input, 8, this._ctx);
 			}
@@ -563,14 +562,14 @@ export class HashemiGrammerParser extends Parser {
 		try {
 			this.enterOuterAlt(_localctx, 1);
 			{
-			this.state = 115;
+			this.state = 113;
 			this.arithmetic();
-			this.state = 118;
+			this.state = 116;
 			this._errHandler.sync(this);
 			switch ( this.interpreter.adaptivePredict(this._input, 9, this._ctx) ) {
 			case 1:
 				{
-				this.state = 116;
+				this.state = 114;
 				_localctx._op = this._input.LT(1);
 				_la = this._input.LA(1);
 				if (!((((_la) & ~0x1F) === 0 && ((1 << _la) & ((1 << HashemiGrammerParser.T__17) | (1 << HashemiGrammerParser.T__18) | (1 << HashemiGrammerParser.T__19) | (1 << HashemiGrammerParser.T__20) | (1 << HashemiGrammerParser.T__21) | (1 << HashemiGrammerParser.T__22))) !== 0))) {
@@ -583,7 +582,7 @@ export class HashemiGrammerParser extends Parser {
 					this._errHandler.reportMatch(this);
 					this.consume();
 				}
-				this.state = 117;
+				this.state = 115;
 				this.arithmetic();
 				}
 				break;
@@ -613,16 +612,16 @@ export class HashemiGrammerParser extends Parser {
 			let _alt: number;
 			this.enterOuterAlt(_localctx, 1);
 			{
-			this.state = 120;
+			this.state = 118;
 			this.term();
-			this.state = 125;
+			this.state = 123;
 			this._errHandler.sync(this);
 			_alt = this.interpreter.adaptivePredict(this._input, 10, this._ctx);
 			while (_alt !== 2 && _alt !== ATN.INVALID_ALT_NUMBER) {
 				if (_alt === 1) {
 					{
 					{
-					this.state = 121;
+					this.state = 119;
 					_localctx._op = this._input.LT(1);
 					_la = this._input.LA(1);
 					if (!(_la === HashemiGrammerParser.T__23 || _la === HashemiGrammerParser.T__24)) {
@@ -635,12 +634,12 @@ export class HashemiGrammerParser extends Parser {
 						this._errHandler.reportMatch(this);
 						this.consume();
 					}
-					this.state = 122;
+					this.state = 120;
 					this.term();
 					}
 					}
 				}
-				this.state = 127;
+				this.state = 125;
 				this._errHandler.sync(this);
 				_alt = this.interpreter.adaptivePredict(this._input, 10, this._ctx);
 			}
@@ -669,16 +668,16 @@ export class HashemiGrammerParser extends Parser {
 			let _alt: number;
 			this.enterOuterAlt(_localctx, 1);
 			{
-			this.state = 128;
+			this.state = 126;
 			this.factor();
-			this.state = 133;
+			this.state = 131;
 			this._errHandler.sync(this);
 			_alt = this.interpreter.adaptivePredict(this._input, 11, this._ctx);
 			while (_alt !== 2 && _alt !== ATN.INVALID_ALT_NUMBER) {
 				if (_alt === 1) {
 					{
 					{
-					this.state = 129;
+					this.state = 127;
 					_localctx._op = this._input.LT(1);
 					_la = this._input.LA(1);
 					if (!((((_la) & ~0x1F) === 0 && ((1 << _la) & ((1 << HashemiGrammerParser.T__25) | (1 << HashemiGrammerParser.T__26) | (1 << HashemiGrammerParser.T__27))) !== 0))) {
@@ -691,12 +690,12 @@ export class HashemiGrammerParser extends Parser {
 						this._errHandler.reportMatch(this);
 						this.consume();
 					}
-					this.state = 130;
+					this.state = 128;
 					this.factor();
 					}
 					}
 				}
-				this.state = 135;
+				this.state = 133;
 				this._errHandler.sync(this);
 				_alt = this.interpreter.adaptivePredict(this._input, 11, this._ctx);
 			}
@@ -723,20 +722,20 @@ export class HashemiGrammerParser extends Parser {
 		try {
 			this.enterOuterAlt(_localctx, 1);
 			{
-			this.state = 147;
+			this.state = 145;
 			this._errHandler.sync(this);
 			switch (this._input.LA(1)) {
 			case HashemiGrammerParser.IDENTIFIER:
 				{
-				this.state = 136;
+				this.state = 134;
 				this.match(HashemiGrammerParser.IDENTIFIER);
-				this.state = 139;
+				this.state = 137;
 				this._errHandler.sync(this);
 				switch ( this.interpreter.adaptivePredict(this._input, 12, this._ctx) ) {
 				case 1:
 					{
-					this.state = 137;
-					this.member_expression(null, null, assignmentName);
+					this.state = 135;
+					this.member_expression();
 					}
 					break;
 
@@ -750,23 +749,23 @@ export class HashemiGrammerParser extends Parser {
 				break;
 			case HashemiGrammerParser.STRING_LITERAL:
 				{
-				this.state = 141;
+				this.state = 139;
 				this.match(HashemiGrammerParser.STRING_LITERAL);
 				}
 				break;
 			case HashemiGrammerParser.NUMERIC_LITERAL:
 				{
-				this.state = 142;
+				this.state = 140;
 				this.match(HashemiGrammerParser.NUMERIC_LITERAL);
 				}
 				break;
 			case HashemiGrammerParser.T__1:
 				{
-				this.state = 143;
+				this.state = 141;
 				_localctx._s = this.match(HashemiGrammerParser.T__1);
-				this.state = 144;
+				this.state = 142;
 				_localctx._expr = this.expression();
-				this.state = 145;
+				this.state = 143;
 				_localctx._e = this.match(HashemiGrammerParser.T__3);
 				}
 				break;
@@ -790,86 +789,86 @@ export class HashemiGrammerParser extends Parser {
 		return _localctx;
 	}
 	// @RuleVersion(0)
-	public member_expression(r: HashemExpressionNode,assignmentReceiver: HashemExpressionNode,assignmentName: HashemExpressionNode): Member_expressionContext {
-		let _localctx: Member_expressionContext = new Member_expressionContext(this._ctx, this.state, r, assignmentReceiver, assignmentName);
+	public member_expression(): Member_expressionContext {
+		let _localctx: Member_expressionContext = new Member_expressionContext(this._ctx, this.state);
 		this.enterRule(_localctx, 26, HashemiGrammerParser.RULE_member_expression);
 		let _la: number;
 		try {
 			this.enterOuterAlt(_localctx, 1);
 			{
-			this.state = 169;
+			this.state = 167;
 			this._errHandler.sync(this);
 			switch (this._input.LA(1)) {
 			case HashemiGrammerParser.T__1:
 				{
-				this.state = 149;
+				this.state = 147;
 				this.match(HashemiGrammerParser.T__1);
-				this.state = 158;
+				this.state = 156;
 				this._errHandler.sync(this);
 				_la = this._input.LA(1);
 				if (_la === HashemiGrammerParser.T__1 || ((((_la - 36)) & ~0x1F) === 0 && ((1 << (_la - 36)) & ((1 << (HashemiGrammerParser.IDENTIFIER - 36)) | (1 << (HashemiGrammerParser.STRING_LITERAL - 36)) | (1 << (HashemiGrammerParser.NUMERIC_LITERAL - 36)))) !== 0)) {
 					{
-					this.state = 150;
+					this.state = 148;
 					this.expression();
-					this.state = 155;
+					this.state = 153;
 					this._errHandler.sync(this);
 					_la = this._input.LA(1);
 					while (_la === HashemiGrammerParser.T__2) {
 						{
 						{
-						this.state = 151;
+						this.state = 149;
 						this.match(HashemiGrammerParser.T__2);
-						this.state = 152;
+						this.state = 150;
 						this.expression();
 						}
 						}
-						this.state = 157;
+						this.state = 155;
 						this._errHandler.sync(this);
 						_la = this._input.LA(1);
 					}
 					}
 				}
 
-				this.state = 160;
+				this.state = 158;
 				_localctx._e = this.match(HashemiGrammerParser.T__3);
 				}
 				break;
 			case HashemiGrammerParser.T__28:
 				{
-				this.state = 161;
+				this.state = 159;
 				this.match(HashemiGrammerParser.T__28);
-				this.state = 162;
+				this.state = 160;
 				this.expression();
 				}
 				break;
 			case HashemiGrammerParser.T__29:
 				{
-				this.state = 163;
+				this.state = 161;
 				this.match(HashemiGrammerParser.T__29);
-				this.state = 164;
+				this.state = 162;
 				this.match(HashemiGrammerParser.IDENTIFIER);
 				}
 				break;
 			case HashemiGrammerParser.T__30:
 				{
-				this.state = 165;
+				this.state = 163;
 				this.match(HashemiGrammerParser.T__30);
-				this.state = 166;
+				this.state = 164;
 				this.expression();
-				this.state = 167;
+				this.state = 165;
 				this.match(HashemiGrammerParser.T__31);
 				}
 				break;
 			default:
 				throw new NoViableAltException(this);
 			}
-			this.state = 172;
+			this.state = 170;
 			this._errHandler.sync(this);
 			switch ( this.interpreter.adaptivePredict(this._input, 17, this._ctx) ) {
 			case 1:
 				{
-				this.state = 171;
-				this.member_expression(_localctx.result, receiver, nestedAssignmentName);
+				this.state = 169;
+				this.member_expression();
 				}
 				break;
 			}
@@ -891,7 +890,7 @@ export class HashemiGrammerParser extends Parser {
 	}
 
 	public static readonly _serializedATN: string =
-		"\x03\uC91D\uCABA\u058D\uAFBA\u4F53\u0607\uEA8B\uC241\x03(\xB1\x04\x02" +
+		"\x03\uC91D\uCABA\u058D\uAFBA\u4F53\u0607\uEA8B\uC241\x03(\xAF\x04\x02" +
 		"\t\x02\x04\x03\t\x03\x04\x04\t\x04\x04\x05\t\x05\x04\x06\t\x06\x04\x07" +
 		"\t\x07\x04\b\t\b\x04\t\t\t\x04\n\t\n\x04\v\t\v\x04\f\t\f\x04\r\t\r\x04" +
 		"\x0E\t\x0E\x04\x0F\t\x0F\x03\x02\x03\x02\x07\x02!\n\x02\f\x02\x0E\x02" +
@@ -901,71 +900,70 @@ export class HashemiGrammerParser extends Parser {
 		"\x03\x05\x03\x05\x03\x05\x03\x05\x03\x05\x03\x05\x03\x05\x03\x05\x03\x05" +
 		"\x03\x05\x03\x05\x03\x05\x05\x05M\n\x05\x03\x06\x03\x06\x03\x06\x03\x06" +
 		"\x03\x06\x03\x06\x03\x07\x03\x07\x03\x07\x03\x07\x03\x07\x03\x07\x03\x07" +
-		"\x03\x07\x03\x07\x05\x07^\n\x07\x03\b\x03\b\x05\bb\n\b\x03\b\x03\b\x03" +
-		"\t\x03\t\x03\t\x07\ti\n\t\f\t\x0E\tl\v\t\x03\n\x03\n\x03\n\x07\nq\n\n" +
-		"\f\n\x0E\nt\v\n\x03\v\x03\v\x03\v\x05\vy\n\v\x03\f\x03\f\x03\f\x07\f~" +
-		"\n\f\f\f\x0E\f\x81\v\f\x03\r\x03\r\x03\r\x07\r\x86\n\r\f\r\x0E\r\x89\v" +
-		"\r\x03\x0E\x03\x0E\x03\x0E\x05\x0E\x8E\n\x0E\x03\x0E\x03\x0E\x03\x0E\x03" +
-		"\x0E\x03\x0E\x03\x0E\x05\x0E\x96\n\x0E\x03\x0F\x03\x0F\x03\x0F\x03\x0F" +
-		"\x07\x0F\x9C\n\x0F\f\x0F\x0E\x0F\x9F\v\x0F\x05\x0F\xA1\n\x0F\x03\x0F\x03" +
-		"\x0F\x03\x0F\x03\x0F\x03\x0F\x03\x0F\x03\x0F\x03\x0F\x03\x0F\x05\x0F\xAC" +
-		"\n\x0F\x03\x0F\x05\x0F\xAF\n\x0F\x03\x0F\x02\x02\x02\x10\x02\x02\x04\x02" +
-		"\x06\x02\b\x02\n\x02\f\x02\x0E\x02\x10\x02\x12\x02\x14\x02\x16\x02\x18" +
-		"\x02\x1A\x02\x1C\x02\x02\x05\x03\x02\x14\x19\x03\x02\x1A\x1B\x03\x02\x1C" +
-		"\x1E\x02\xBD\x02\x1E\x03\x02\x02\x02\x04\'\x03\x02\x02\x02\x067\x03\x02" +
-		"\x02\x02\bL\x03\x02\x02\x02\nN\x03\x02\x02\x02\fT\x03\x02\x02\x02\x0E" +
-		"_\x03\x02\x02\x02\x10e\x03\x02\x02\x02\x12m\x03\x02\x02\x02\x14u\x03\x02" +
-		"\x02\x02\x16z\x03\x02\x02\x02\x18\x82\x03\x02\x02\x02\x1A\x95\x03\x02" +
-		"\x02\x02\x1C\xAB\x03\x02\x02\x02\x1E\"\x05\x04\x03\x02\x1F!\x05\x04\x03" +
-		"\x02 \x1F\x03\x02\x02\x02!$\x03\x02\x02\x02\" \x03\x02\x02\x02\"#\x03" +
-		"\x02\x02\x02#%\x03\x02\x02\x02$\"\x03\x02\x02\x02%&\x07\x02\x02\x03&\x03" +
-		"\x03\x02\x02\x02\'(\x07\x03\x02\x02()\x07&\x02\x02)2\x07\x04\x02\x02*" +
-		"/\x07&\x02\x02+,\x07\x05\x02\x02,.\x07&\x02\x02-+\x03\x02\x02\x02.1\x03" +
-		"\x02\x02\x02/-\x03\x02\x02\x02/0\x03\x02\x02\x0203\x03\x02\x02\x021/\x03" +
-		"\x02\x02\x022*\x03\x02\x02\x0223\x03\x02\x02\x0234\x03\x02\x02\x0245\x07" +
-		"\x06\x02\x0256\x05\x06\x04\x026\x05\x03\x02\x02\x027;\x07\x07\x02\x02" +
-		"8:\x05\b\x05\x0298\x03\x02\x02\x02:=\x03\x02\x02\x02;9\x03\x02\x02\x02" +
-		";<\x03\x02\x02\x02<>\x03\x02\x02\x02=;\x03\x02\x02\x02>?\x07\b\x02\x02" +
-		"?\x07\x03\x02\x02\x02@M\x05\n\x06\x02AB\x07\t\x02\x02BM\x07\n\x02\x02" +
-		"CD\x07\v\x02\x02DM\x07\n\x02\x02EM\x05\f\x07\x02FM\x05\x0E\b\x02GH\x05" +
-		"\x10\t\x02HI\x07\n\x02\x02IM\x03\x02\x02\x02JK\x07\f\x02\x02KM\x07\n\x02" +
-		"\x02L@\x03\x02\x02\x02LA\x03\x02\x02\x02LC\x03\x02\x02\x02LE\x03\x02\x02" +
-		"\x02LF\x03\x02\x02\x02LG\x03\x02\x02\x02LJ\x03\x02\x02\x02M\t\x03\x02" +
-		"\x02\x02NO\x07\r\x02\x02OP\x07\x04\x02\x02PQ\x05\x10\t\x02QR\x07\x0E\x02" +
-		"\x02RS\x05\x06\x04\x02S\v\x03\x02\x02\x02TU\x07\x0F\x02\x02UV\x07\x04" +
-		"\x02\x02VW\x05\x10\t\x02WX\x07\x0E\x02\x02X]\x05\x06\x04\x02YZ\x07\x10" +
-		"\x02\x02Z[\x05\x06\x04\x02[\\\b\x07\x01\x02\\^\x03\x02\x02\x02]Y\x03\x02" +
-		"\x02\x02]^\x03\x02\x02\x02^\r\x03\x02\x02\x02_a\x07\x11\x02\x02`b\x05" +
-		"\x10\t\x02a`\x03\x02\x02\x02ab\x03\x02\x02\x02bc\x03\x02\x02\x02cd\x07" +
-		"\n\x02\x02d\x0F\x03\x02\x02\x02ej\x05\x12\n\x02fg\x07\x12\x02\x02gi\x05" +
-		"\x12\n\x02hf\x03\x02\x02\x02il\x03\x02\x02\x02jh\x03\x02\x02\x02jk\x03" +
-		"\x02\x02\x02k\x11\x03\x02\x02\x02lj\x03\x02\x02\x02mr\x05\x14\v\x02no" +
-		"\x07\x13\x02\x02oq\x05\x14\v\x02pn\x03\x02\x02\x02qt\x03\x02\x02\x02r" +
-		"p\x03\x02\x02\x02rs\x03\x02\x02\x02s\x13\x03\x02\x02\x02tr\x03\x02\x02" +
-		"\x02ux\x05\x16\f\x02vw\t\x02\x02\x02wy\x05\x16\f\x02xv\x03\x02\x02\x02" +
-		"xy\x03\x02\x02\x02y\x15\x03\x02\x02\x02z\x7F\x05\x18\r\x02{|\t\x03\x02" +
-		"\x02|~\x05\x18\r\x02}{\x03\x02\x02\x02~\x81\x03\x02\x02\x02\x7F}\x03\x02" +
-		"\x02\x02\x7F\x80\x03\x02\x02\x02\x80\x17\x03\x02\x02\x02\x81\x7F\x03\x02" +
-		"\x02\x02\x82\x87\x05\x1A\x0E\x02\x83\x84\t\x04\x02\x02\x84\x86\x05\x1A" +
-		"\x0E\x02\x85\x83\x03\x02\x02\x02\x86\x89\x03\x02\x02\x02\x87\x85\x03\x02" +
-		"\x02\x02\x87\x88\x03\x02\x02\x02\x88\x19\x03\x02\x02\x02\x89\x87\x03\x02" +
-		"\x02\x02\x8A\x8D\x07&\x02\x02\x8B\x8E\x05\x1C\x0F\x02\x8C\x8E\x03\x02" +
-		"\x02\x02\x8D\x8B\x03\x02\x02\x02\x8D\x8C\x03\x02\x02\x02\x8E\x96\x03\x02" +
-		"\x02\x02\x8F\x96\x07\'\x02\x02\x90\x96\x07(\x02\x02\x91\x92\x07\x04\x02" +
-		"\x02\x92\x93\x05\x10\t\x02\x93\x94\x07\x06\x02\x02\x94\x96\x03\x02\x02" +
-		"\x02\x95\x8A\x03\x02\x02\x02\x95\x8F\x03\x02\x02\x02\x95\x90\x03\x02\x02" +
-		"\x02\x95\x91\x03\x02\x02\x02\x96\x1B\x03\x02\x02\x02\x97\xA0\x07\x04\x02" +
-		"\x02\x98\x9D\x05\x10\t\x02\x99\x9A\x07\x05\x02\x02\x9A\x9C\x05\x10\t\x02" +
-		"\x9B\x99\x03\x02\x02\x02\x9C\x9F\x03\x02\x02\x02\x9D\x9B\x03\x02\x02\x02" +
-		"\x9D\x9E\x03\x02\x02\x02\x9E\xA1\x03\x02\x02\x02\x9F\x9D\x03\x02\x02\x02" +
-		"\xA0\x98\x03\x02\x02\x02\xA0\xA1\x03\x02\x02\x02\xA1\xA2\x03\x02\x02\x02" +
-		"\xA2\xAC\x07\x06\x02\x02\xA3\xA4\x07\x1F\x02\x02\xA4\xAC\x05\x10\t\x02" +
-		"\xA5\xA6\x07 \x02\x02\xA6\xAC\x07&\x02\x02\xA7\xA8\x07!\x02\x02\xA8\xA9" +
-		"\x05\x10\t\x02\xA9\xAA\x07\"\x02\x02\xAA\xAC\x03\x02\x02\x02\xAB\x97\x03" +
-		"\x02\x02\x02\xAB\xA3\x03\x02\x02\x02\xAB\xA5\x03\x02\x02\x02\xAB\xA7\x03" +
-		"\x02\x02\x02\xAC\xAE\x03\x02\x02\x02\xAD\xAF\x05\x1C\x0F\x02\xAE\xAD\x03" +
-		"\x02\x02\x02\xAE\xAF\x03\x02\x02\x02\xAF\x1D\x03\x02\x02\x02\x14\"/2;" +
-		"L]ajrx\x7F\x87\x8D\x95\x9D\xA0\xAB\xAE";
+		"\x05\x07\\\n\x07\x03\b\x03\b\x05\b`\n\b\x03\b\x03\b\x03\t\x03\t\x03\t" +
+		"\x07\tg\n\t\f\t\x0E\tj\v\t\x03\n\x03\n\x03\n\x07\no\n\n\f\n\x0E\nr\v\n" +
+		"\x03\v\x03\v\x03\v\x05\vw\n\v\x03\f\x03\f\x03\f\x07\f|\n\f\f\f\x0E\f\x7F" +
+		"\v\f\x03\r\x03\r\x03\r\x07\r\x84\n\r\f\r\x0E\r\x87\v\r\x03\x0E\x03\x0E" +
+		"\x03\x0E\x05\x0E\x8C\n\x0E\x03\x0E\x03\x0E\x03\x0E\x03\x0E\x03\x0E\x03" +
+		"\x0E\x05\x0E\x94\n\x0E\x03\x0F\x03\x0F\x03\x0F\x03\x0F\x07\x0F\x9A\n\x0F" +
+		"\f\x0F\x0E\x0F\x9D\v\x0F\x05\x0F\x9F\n\x0F\x03\x0F\x03\x0F\x03\x0F\x03" +
+		"\x0F\x03\x0F\x03\x0F\x03\x0F\x03\x0F\x03\x0F\x05\x0F\xAA\n\x0F\x03\x0F" +
+		"\x05\x0F\xAD\n\x0F\x03\x0F\x02\x02\x02\x10\x02\x02\x04\x02\x06\x02\b\x02" +
+		"\n\x02\f\x02\x0E\x02\x10\x02\x12\x02\x14\x02\x16\x02\x18\x02\x1A\x02\x1C" +
+		"\x02\x02\x05\x03\x02\x14\x19\x03\x02\x1A\x1B\x03\x02\x1C\x1E\x02\xBB\x02" +
+		"\x1E\x03\x02\x02\x02\x04\'\x03\x02\x02\x02\x067\x03\x02\x02\x02\bL\x03" +
+		"\x02\x02\x02\nN\x03\x02\x02\x02\fT\x03\x02\x02\x02\x0E]\x03\x02\x02\x02" +
+		"\x10c\x03\x02\x02\x02\x12k\x03\x02\x02\x02\x14s\x03\x02\x02\x02\x16x\x03" +
+		"\x02\x02\x02\x18\x80\x03\x02\x02\x02\x1A\x93\x03\x02\x02\x02\x1C\xA9\x03" +
+		"\x02\x02\x02\x1E\"\x05\x04\x03\x02\x1F!\x05\x04\x03\x02 \x1F\x03\x02\x02" +
+		"\x02!$\x03\x02\x02\x02\" \x03\x02\x02\x02\"#\x03\x02\x02\x02#%\x03\x02" +
+		"\x02\x02$\"\x03\x02\x02\x02%&\x07\x02\x02\x03&\x03\x03\x02\x02\x02\'(" +
+		"\x07\x03\x02\x02()\x07&\x02\x02)2\x07\x04\x02\x02*/\x07&\x02\x02+,\x07" +
+		"\x05\x02\x02,.\x07&\x02\x02-+\x03\x02\x02\x02.1\x03\x02\x02\x02/-\x03" +
+		"\x02\x02\x02/0\x03\x02\x02\x0203\x03\x02\x02\x021/\x03\x02\x02\x022*\x03" +
+		"\x02\x02\x0223\x03\x02\x02\x0234\x03\x02\x02\x0245\x07\x06\x02\x0256\x05" +
+		"\x06\x04\x026\x05\x03\x02\x02\x027;\x07\x07\x02\x028:\x05\b\x05\x0298" +
+		"\x03\x02\x02\x02:=\x03\x02\x02\x02;9\x03\x02\x02\x02;<\x03\x02\x02\x02" +
+		"<>\x03\x02\x02\x02=;\x03\x02\x02\x02>?\x07\b\x02\x02?\x07\x03\x02\x02" +
+		"\x02@M\x05\n\x06\x02AB\x07\t\x02\x02BM\x07\n\x02\x02CD\x07\v\x02\x02D" +
+		"M\x07\n\x02\x02EM\x05\f\x07\x02FM\x05\x0E\b\x02GH\x05\x10\t\x02HI\x07" +
+		"\n\x02\x02IM\x03\x02\x02\x02JK\x07\f\x02\x02KM\x07\n\x02\x02L@\x03\x02" +
+		"\x02\x02LA\x03\x02\x02\x02LC\x03\x02\x02\x02LE\x03\x02\x02\x02LF\x03\x02" +
+		"\x02\x02LG\x03\x02\x02\x02LJ\x03\x02\x02\x02M\t\x03\x02\x02\x02NO\x07" +
+		"\r\x02\x02OP\x07\x04\x02\x02PQ\x05\x10\t\x02QR\x07\x0E\x02\x02RS\x05\x06" +
+		"\x04\x02S\v\x03\x02\x02\x02TU\x07\x0F\x02\x02UV\x07\x04\x02\x02VW\x05" +
+		"\x10\t\x02WX\x07\x0E\x02\x02X[\x05\x06\x04\x02YZ\x07\x10\x02\x02Z\\\x05" +
+		"\x06\x04\x02[Y\x03\x02\x02\x02[\\\x03\x02\x02\x02\\\r\x03\x02\x02\x02" +
+		"]_\x07\x11\x02\x02^`\x05\x10\t\x02_^\x03\x02\x02\x02_`\x03\x02\x02\x02" +
+		"`a\x03\x02\x02\x02ab\x07\n\x02\x02b\x0F\x03\x02\x02\x02ch\x05\x12\n\x02" +
+		"de\x07\x12\x02\x02eg\x05\x12\n\x02fd\x03\x02\x02\x02gj\x03\x02\x02\x02" +
+		"hf\x03\x02\x02\x02hi\x03\x02\x02\x02i\x11\x03\x02\x02\x02jh\x03\x02\x02" +
+		"\x02kp\x05\x14\v\x02lm\x07\x13\x02\x02mo\x05\x14\v\x02nl\x03\x02\x02\x02" +
+		"or\x03\x02\x02\x02pn\x03\x02\x02\x02pq\x03\x02\x02\x02q\x13\x03\x02\x02" +
+		"\x02rp\x03\x02\x02\x02sv\x05\x16\f\x02tu\t\x02\x02\x02uw\x05\x16\f\x02" +
+		"vt\x03\x02\x02\x02vw\x03\x02\x02\x02w\x15\x03\x02\x02\x02x}\x05\x18\r" +
+		"\x02yz\t\x03\x02\x02z|\x05\x18\r\x02{y\x03\x02\x02\x02|\x7F\x03\x02\x02" +
+		"\x02}{\x03\x02\x02\x02}~\x03\x02\x02\x02~\x17\x03\x02\x02\x02\x7F}\x03" +
+		"\x02\x02\x02\x80\x85\x05\x1A\x0E\x02\x81\x82\t\x04\x02\x02\x82\x84\x05" +
+		"\x1A\x0E\x02\x83\x81\x03\x02\x02\x02\x84\x87\x03\x02\x02\x02\x85\x83\x03" +
+		"\x02\x02\x02\x85\x86\x03\x02\x02\x02\x86\x19\x03\x02\x02\x02\x87\x85\x03" +
+		"\x02\x02\x02\x88\x8B\x07&\x02\x02\x89\x8C\x05\x1C\x0F\x02\x8A\x8C\x03" +
+		"\x02\x02\x02\x8B\x89\x03\x02\x02\x02\x8B\x8A\x03\x02\x02\x02\x8C\x94\x03" +
+		"\x02\x02\x02\x8D\x94\x07\'\x02\x02\x8E\x94\x07(\x02\x02\x8F\x90\x07\x04" +
+		"\x02\x02\x90\x91\x05\x10\t\x02\x91\x92\x07\x06\x02\x02\x92\x94\x03\x02" +
+		"\x02\x02\x93\x88\x03\x02\x02\x02\x93\x8D\x03\x02\x02\x02\x93\x8E\x03\x02" +
+		"\x02\x02\x93\x8F\x03\x02\x02\x02\x94\x1B\x03\x02\x02\x02\x95\x9E\x07\x04" +
+		"\x02\x02\x96\x9B\x05\x10\t\x02\x97\x98\x07\x05\x02\x02\x98\x9A\x05\x10" +
+		"\t\x02\x99\x97\x03\x02\x02\x02\x9A\x9D\x03\x02\x02\x02\x9B\x99\x03\x02" +
+		"\x02\x02\x9B\x9C\x03\x02\x02\x02\x9C\x9F\x03\x02\x02\x02\x9D\x9B\x03\x02" +
+		"\x02\x02\x9E\x96\x03\x02\x02\x02\x9E\x9F\x03\x02\x02\x02\x9F\xA0\x03\x02" +
+		"\x02\x02\xA0\xAA\x07\x06\x02\x02\xA1\xA2\x07\x1F\x02\x02\xA2\xAA\x05\x10" +
+		"\t\x02\xA3\xA4\x07 \x02\x02\xA4\xAA\x07&\x02\x02\xA5\xA6\x07!\x02\x02" +
+		"\xA6\xA7\x05\x10\t\x02\xA7\xA8\x07\"\x02\x02\xA8\xAA\x03\x02\x02\x02\xA9" +
+		"\x95\x03\x02\x02\x02\xA9\xA1\x03\x02\x02\x02\xA9\xA3\x03\x02\x02\x02\xA9" +
+		"\xA5\x03\x02\x02\x02\xAA\xAC\x03\x02\x02\x02\xAB\xAD\x05\x1C\x0F\x02\xAC" +
+		"\xAB\x03\x02\x02\x02\xAC\xAD\x03\x02\x02\x02\xAD\x1D\x03\x02\x02\x02\x14" +
+		"\"/2;L[_hpv}\x85\x8B\x93\x9B\x9E\xA9\xAC";
 	public static __ATN: ATN;
 	public static get _ATN(): ATN {
 		if (!HashemiGrammerParser.__ATN) {
@@ -1060,8 +1058,6 @@ export class FunctionContext extends ParserRuleContext {
 
 
 export class BlockContext extends ParserRuleContext {
-	public inLoop: boolean;
-	public result: HashemStatementNode;
 	public _s: Token;
 	public _e: Token;
 	public statement(): StatementContext[];
@@ -1073,9 +1069,8 @@ export class BlockContext extends ParserRuleContext {
 			return this.getRuleContext(i, StatementContext);
 		}
 	}
-	constructor(parent: ParserRuleContext | undefined, invokingState: number, inLoop: boolean) {
+	constructor(parent: ParserRuleContext | undefined, invokingState: number) {
 		super(parent, invokingState);
-		this.inLoop = inLoop;
 	}
 	// @Override
 	public get ruleIndex(): number { return HashemiGrammerParser.RULE_block; }
@@ -1103,8 +1098,6 @@ export class BlockContext extends ParserRuleContext {
 
 
 export class StatementContext extends ParserRuleContext {
-	public inLoop: boolean;
-	public result: HashemStatementNode;
 	public _b: Token;
 	public _c: Token;
 	public _d: Token;
@@ -1120,9 +1113,8 @@ export class StatementContext extends ParserRuleContext {
 	public expression(): ExpressionContext | undefined {
 		return this.tryGetRuleContext(0, ExpressionContext);
 	}
-	constructor(parent: ParserRuleContext | undefined, invokingState: number, inLoop: boolean) {
+	constructor(parent: ParserRuleContext | undefined, invokingState: number) {
 		super(parent, invokingState);
-		this.inLoop = inLoop;
 	}
 	// @Override
 	public get ruleIndex(): number { return HashemiGrammerParser.RULE_statement; }
@@ -1150,7 +1142,6 @@ export class StatementContext extends ParserRuleContext {
 
 
 export class While_statementContext extends ParserRuleContext {
-	public result: HashemStatementNode;
 	public _w: Token;
 	public _condition: ExpressionContext;
 	public _body: BlockContext;
@@ -1189,12 +1180,9 @@ export class While_statementContext extends ParserRuleContext {
 
 
 export class If_statementContext extends ParserRuleContext {
-	public inLoop: boolean;
-	public result: HashemStatementNode;
 	public _i: Token;
 	public _condition: ExpressionContext;
 	public _then: BlockContext;
-	public _block: BlockContext;
 	public expression(): ExpressionContext {
 		return this.getRuleContext(0, ExpressionContext);
 	}
@@ -1207,9 +1195,8 @@ export class If_statementContext extends ParserRuleContext {
 			return this.getRuleContext(i, BlockContext);
 		}
 	}
-	constructor(parent: ParserRuleContext | undefined, invokingState: number, inLoop: boolean) {
+	constructor(parent: ParserRuleContext | undefined, invokingState: number) {
 		super(parent, invokingState);
-		this.inLoop = inLoop;
 	}
 	// @Override
 	public get ruleIndex(): number { return HashemiGrammerParser.RULE_if_statement; }
@@ -1237,7 +1224,6 @@ export class If_statementContext extends ParserRuleContext {
 
 
 export class Return_statementContext extends ParserRuleContext {
-	public result: HashemStatementNode;
 	public _r: Token;
 	public expression(): ExpressionContext | undefined {
 		return this.tryGetRuleContext(0, ExpressionContext);
@@ -1271,7 +1257,6 @@ export class Return_statementContext extends ParserRuleContext {
 
 
 export class ExpressionContext extends ParserRuleContext {
-	public result: HashemExpressionNode;
 	public _op: Token;
 	public logic_term(): Logic_termContext[];
 	public logic_term(i: number): Logic_termContext;
@@ -1311,7 +1296,6 @@ export class ExpressionContext extends ParserRuleContext {
 
 
 export class Logic_termContext extends ParserRuleContext {
-	public result: HashemExpressionNode;
 	public _op: Token;
 	public logic_factor(): Logic_factorContext[];
 	public logic_factor(i: number): Logic_factorContext;
@@ -1351,7 +1335,6 @@ export class Logic_termContext extends ParserRuleContext {
 
 
 export class Logic_factorContext extends ParserRuleContext {
-	public result: HashemExpressionNode;
 	public _op: Token;
 	public arithmetic(): ArithmeticContext[];
 	public arithmetic(i: number): ArithmeticContext;
@@ -1391,7 +1374,6 @@ export class Logic_factorContext extends ParserRuleContext {
 
 
 export class ArithmeticContext extends ParserRuleContext {
-	public result: HashemExpressionNode;
 	public _op: Token;
 	public term(): TermContext[];
 	public term(i: number): TermContext;
@@ -1431,7 +1413,6 @@ export class ArithmeticContext extends ParserRuleContext {
 
 
 export class TermContext extends ParserRuleContext {
-	public result: HashemExpressionNode;
 	public _op: Token;
 	public factor(): FactorContext[];
 	public factor(i: number): FactorContext;
@@ -1471,7 +1452,6 @@ export class TermContext extends ParserRuleContext {
 
 
 export class FactorContext extends ParserRuleContext {
-	public result: HashemExpressionNode;
 	public _s: Token;
 	public _expr: ExpressionContext;
 	public _e: Token;
@@ -1513,10 +1493,6 @@ export class FactorContext extends ParserRuleContext {
 
 
 export class Member_expressionContext extends ParserRuleContext {
-	public r: HashemExpressionNode;
-	public assignmentReceiver: HashemExpressionNode;
-	public assignmentName: HashemExpressionNode;
-	public result: HashemExpressionNode;
 	public _e: Token;
 	public expression(): ExpressionContext[];
 	public expression(i: number): ExpressionContext;
@@ -1531,11 +1507,8 @@ export class Member_expressionContext extends ParserRuleContext {
 	public member_expression(): Member_expressionContext | undefined {
 		return this.tryGetRuleContext(0, Member_expressionContext);
 	}
-	constructor(parent: ParserRuleContext | undefined, invokingState: number, r: HashemExpressionNode, assignmentReceiver: HashemExpressionNode, assignmentName: HashemExpressionNode) {
+	constructor(parent: ParserRuleContext | undefined, invokingState: number) {
 		super(parent, invokingState);
-		this.r = r;
-		this.assignmentReceiver = assignmentReceiver;
-		this.assignmentName = assignmentName;
 	}
 	// @Override
 	public get ruleIndex(): number { return HashemiGrammerParser.RULE_member_expression; }
