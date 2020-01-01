@@ -27,6 +27,33 @@
           }
         }
       }
+    },
+    "runner": {
+      "root": "libs/runner",
+      "sourceRoot": "libs/runner/src",
+      "projectType": "library",
+      "schematics": {},
+      "architect": {
+        "lint": {
+          "builder": "@nrwl/linter:lint",
+          "options": {
+            "linter": "eslint",
+            "config": "libs/runner/.eslintrc",
+            "tsConfig": [
+              "libs/runner/tsconfig.lib.json",
+              "libs/runner/tsconfig.spec.json"
+            ],
+            "exclude": ["**/node_modules/**", "!libs/runner/**"]
+          }
+        },
+        "test": {
+          "builder": "@nrwl/jest:jest",
+          "options": {
+            "jestConfig": "libs/runner/jest.config.js",
+            "tsConfig": "libs/runner/tsconfig.spec.json"
+          }
+        }
+      }
     }
   },
   "cli": {

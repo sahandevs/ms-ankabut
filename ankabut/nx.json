@@ -10,6 +10,9 @@
   "projects": {
     "parser": {
       "tags": []
+    },
+    "runner": {
+      "tags": []
     }
   }
 }

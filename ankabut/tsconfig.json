@@ -16,7 +16,8 @@
     "skipDefaultLibCheck": true,
     "baseUrl": ".",
     "paths": {
-      "@ankabut/parser": ["libs/parser/src/index.ts"]
+      "@ankabut/parser": ["libs/parser/src/index.ts"],
+      "@ankabut/runner": ["libs/runner/src/index.ts"]
     }
   },
   "exclude": ["node_modules", "tmp"]
