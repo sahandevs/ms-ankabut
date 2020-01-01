@@ -1,11 +1,11 @@
 import { run } from './runner';
 
-it('sould return 10', async () => {
+it('sould return 11', async () => {
   let result = await run(
     `
         bebin azinja() {
             
-            bede 1 + 9;
+            bede 1 + 9 + 1;
         }
     `
   );

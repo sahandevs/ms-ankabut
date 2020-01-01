@@ -10,8 +10,7 @@ sourceFile: function function* EOF;
 function:
 	'bebin' IDENTIFIER s = '(' (IDENTIFIER ( ',' IDENTIFIER)*)? ')' body = block;
 
-block:
-	s = '{' (statement)* e = '}';
+block: s = '{' (statement)* e = '}';
 
 statement:
 	(
@@ -28,36 +27,28 @@ while_statement:
 	w = 'ta' '(' condition = expression ') bood' body = block;
 
 if_statement:
-	i = 'age' '(' condition = expression ') bood' then = block(
+	i = 'age' '(' condition = expression ') bood' then = block (
 		'na?' block
 	)?;
 
-return_statement:
-	r = 'bede' (expression)? ';';
+return_statement: r = 'bede' (expression)? ';';
 
-expression:
-	logic_term (op = '||' logic_term)*;
+expression: logic_term (op = '||' logic_term)*;
 
-logic_term:
-	logic_factor (op = '&&' logic_factor)*;
+logic_term: logic_factor (op = '&&' logic_factor)*;
 
 logic_factor:
 	arithmetic (
 		op = ('<' | '<=' | '>' | '>=' | '==' | '!=') arithmetic
 	)?;
 
-arithmetic:
-	term (op = ('+' | '-') term)*;
+arithmetic: term (op = ('+' | '-') term)*;
 
-term:
-	factor (op = ('*' | '/' | '%') factor)*;
+term: factor (op = ('*' | '/' | '%') factor)*;
 
 factor:
 	(
-		IDENTIFIER (
-			member_expression
-			|
-		)
+		IDENTIFIER ( member_expression |)
 		| STRING_LITERAL
 		| NUMERIC_LITERAL
 		| s = '(' expr = expression e = ')'
@@ -69,9 +60,7 @@ member_expression:
 		| '=' expression
 		| '.' IDENTIFIER
 		| '[' expression ']'
-	) (
-		member_expression
-	)?;
+	) (member_expression)?;
 
 // lexer
 

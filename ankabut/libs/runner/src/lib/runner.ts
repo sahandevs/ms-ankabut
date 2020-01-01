@@ -19,7 +19,7 @@ function parseAndRun(
   onNoSyntaxError: OnNoSyntaxError,
   onSolve: OnSolve
 ) {
-  let listener = new HashemiVisitor(onSolve);
+  let listener = new HashemiVisitor(onSolve, 'azinja');
   let inputStream = new ANTLRInputStream(sourceFile);
   let lexer = new Parser.HashemiGrammerLexer(inputStream);
   let tokenStream = new CommonTokenStream(lexer);
@@ -42,6 +42,7 @@ ${e}
   if (parser.numberOfSyntaxErrors === 0) {
     onNoSyntaxError();
   }
+ 
   onSolve(listener.visit(tree));
   // ParseTreeWalker.DEFAULT.walk(listener, tree);
 }
